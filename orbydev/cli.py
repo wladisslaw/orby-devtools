@@ -117,5 +117,16 @@ def templates():
     click.echo(f"Templates: {click.style(str(len(templates_list)), fg='green', bold=True)}")
 
 
+@main.command()
+@click.argument("name")
+@click.argument("path")
+def savetemplate(name, path):
+    """Сохраняет проект как шаблон."""
+    status, exception = Templates.savetemplate(name, path)
+    if status:
+        click.echo(click.style(f"Template '{name}' saved!", "green"))
+    else:
+        click.echo(f"Error when saving template: {click.style(str(exception), 'red')}", err=True)
+
 if __name__ == "__main__":
     main()
