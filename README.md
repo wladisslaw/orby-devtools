@@ -51,13 +51,10 @@ myapp/
 ```json
 {
   "name": "myapp",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "author": "Your Name",
   "description": "My Orby app",
-  "permissions": {
-    "fs": ["read", "/data/"],
-    "net": ["api.example.com"]
-  },
+  "permissions": {},
   "entry_point": "main.py"
 }
 ```
@@ -65,4 +62,5 @@ myapp/
 ## Полезное
 - [Баг-трекер](https://github.com/wladisslaw/orby-devtools/issues)
 - Совместимость: Python 3.10+
+- Версия: 25.5.1
 - Статус: Beta
