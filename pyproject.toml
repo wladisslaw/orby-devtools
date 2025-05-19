@@ -1,0 +1,13 @@
+[project]
+name = "orby-devtools"
+version = "0.1.0"
+description = "Tools for Orby applications development."
+
+dependencies = [
+    "click>=8.0",
+    "pyyaml>=6.0",
+    "pipreqs>=0.4.0"
+]
+
+[project.scripts]
+orbydev = "orbydev.cli:main"

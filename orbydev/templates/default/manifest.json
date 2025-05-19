@@ -1,0 +1,11 @@
+{
+    "name": "myapp",
+    "version": "1.0.0",
+    "author": "Unknown",
+    "description": "",
+    "permissions": {
+      "fs": ["read", "/data/"],
+      "net": []
+    },
+    "entry_point": "main.py"
+  }
