@@ -9,5 +9,5 @@ Classes:
     Templates: Предоставляет интерфейс для работы с шаблонами.
 """
 
-from project import Projects
-from templates import Templates
+from .project import Projects
+from .templates import Templates

@@ -25,7 +25,7 @@ def main():
 @click.argument("path", default="")
 @click.option("--template", default="default", help="Project template.")
 def new(name, path, template):
-    """Create a new Orby project."""
+    """Создать новый проект Orby."""
     status, exception = Projects.new(name, path, template)
     if status:
         click.echo(click.style(f"Project '{name}' created!", "green"))
@@ -37,7 +37,7 @@ def new(name, path, template):
 @click.argument("path")
 @click.argument("save_at", default="")
 def build(path, save_at):
-    """Create a new Orby project."""
+    """Собрать готовый проект Orby."""
     status, exception = Projects.build(path, save_at)
     if status:
         click.echo(click.style(f"Project builded!", "green"))
@@ -72,6 +72,20 @@ def projects():
     
     click.echo("=" * 85)
     click.echo(f"Projects: {click.style(str(len(projects_list)), fg='green', bold=True)}")
+
+
+@main.command()
+@click.argument("name")
+@click.argument("rmdir", default="f")
+def rmproject(name: str, rmdir: str):
+    """Удалить проект."""
+    rmdir = rmdir.lower() == "t"
+
+    status, exception = Projects.remove_project(name, rmdir)
+    if status:
+        click.echo(click.style(f"Project deleted!", "green"))
+    else:
+        click.echo(f"Error when deleting project: {click.style(str(exception), 'red')}", err=True)
 
 
 if __name__ == "__main__":

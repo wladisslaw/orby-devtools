@@ -135,10 +135,12 @@ class Projects:
             project_data = projects[name]
             
             if remove_dir:
-                Path(project_data["path"]).rmdir()
+                shutil.rmtree(project_data["path"])
             
             projects.pop(name, None)
             PROJECTS_DB.write_text(json.dumps(projects, indent=4, ensure_ascii=False), "utf-8")
+
+            return True, None
 
         except Exception as e:
             return False, e
