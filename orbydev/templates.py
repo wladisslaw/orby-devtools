@@ -30,18 +30,15 @@ class Templates:
             for template_dir in TEMPLATES_DIR.iterdir():
                 if template_dir.is_dir():
                     manifest_path = template_dir / "manifest.json"
-                    template_info = {
-                        "path": str(template_dir.absolute()),
-                        "description": ""
-                    }
+                    template_info = ""
 
                     if manifest_path.exists():
                         try:
                             with open(manifest_path, 'r') as f:
                                 manifest = json.load(f)
-                                template_info["description"] = manifest.get("description", "")
+                                template_info = manifest.get("description", "")
                         except json.JSONDecodeError as e:
-                            template_info["description"] = "Invalid manifest.json"
+                            template_info = "Invalid manifest.json"
                     
                     templates[template_dir.name] = template_info
             

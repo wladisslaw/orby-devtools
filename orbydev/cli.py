@@ -1,5 +1,6 @@
 import click
 from .project import Projects
+from .templates import Templates
 from textwrap import shorten
 
 def _format_path(path, max_length=50):
@@ -86,6 +87,34 @@ def rmproject(name: str, rmdir: str):
         click.echo(click.style(f"Project deleted!", "green"))
     else:
         click.echo(f"Error when deleting project: {click.style(str(exception), 'red')}", err=True)
+
+
+@main.command()
+def templates():
+    """Список всех шаблонов."""
+    templates_list, exception = Templates.templates_list()
+
+    if exception is not None:
+        click.echo(f"Error when getting templates list: {click.style(str(exception), 'red')}", err=True)
+    
+    if not templates_list:
+        click.echo(click.style("You have no templates.", "blue"))
+        return
+    
+    header = f"{'Template':<20} │ {'Description':<60}"
+    click.echo(click.style("Templates list", bold=True))
+    click.echo("=" * 85)
+    click.echo(click.style(header, underline=True))
+    click.echo("-" * 85)
+    
+    for name, data in sorted(templates_list.items()):
+        click.echo(
+            f"{click.style(name, fg=Colors.PROJECT):<20} │ "
+            f"{click.style(data, fg=Colors.PATH):<60}"
+        )
+    
+    click.echo("=" * 85)
+    click.echo(f"Templates: {click.style(str(len(templates_list)), fg='green', bold=True)}")
 
 
 if __name__ == "__main__":

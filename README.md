@@ -35,8 +35,8 @@ orbydev build myapp
 | `build <path> <save_at>` | Собрать проект из директории в `.orby` |
 | `projects` | Список всех проектов |
 | `rmproject <name> <rmdir (t/f)>` | Удалить проект |
-| `savetemplate <name> <path>` | Сохранить проект как шаблон |
 | `templates` | Список всех шаблонов |
+| `savetemplate <name> <path>` | Сохранить проект как шаблон |
 | `rmtemplate <name>` | Удалить шаблон |
 
 ## Структура проекта
