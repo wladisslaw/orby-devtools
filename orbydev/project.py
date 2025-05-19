@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Dict
+from typing import Dict, Tuple
 import shutil
 import json
 import zipfile
@@ -19,7 +19,7 @@ class Projects:
     """
 
     @staticmethod
-    def new(name: str, path: str = "", template: str = "default") -> tuple[bool, Exception | None]:
+    def new(name: str, path: str = "", template: str = "default") -> Tuple[bool, Exception | None]:
         """
         Создаёт новый Orby проект и возвращает код выполнения.
 
@@ -29,8 +29,10 @@ class Projects:
             template (str, optional): Используемый шаблон. По умолчанию - `"default"`.
         
         Returns:
-            status (bool): Статус выполнения.
-            exception (Exception | None): Ошибка, вызванная во время выполнения. Если ошибок не было вызвано, то `None`.
+            Кортеж, содержащий:
+                bool: Статус выполнения.
+                Exception | None: Исключение, если возникла ошибка при создании проекта, 
+                            None если ошибок не было.
         """
 
         try:
@@ -66,7 +68,7 @@ class Projects:
             return False, e
     
     @staticmethod
-    def build(path: str, save_at: str = "") -> tuple[bool, Exception | None]:
+    def build(path: str, save_at: str = "") -> Tuple[bool, Exception | None]:
         """
         Собирает проект в конечное .orby приложение.
 
@@ -75,8 +77,10 @@ class Projects:
             save_at (str, optional): Где сохранять файл. Если не указать, будет сохранено в текущей дирректории.
         
         Returns:
-            status (bool): Статус выполнения.
-            exception (Exception | None): Ошибка, вызванная во время выполнения. Если ошибок не было вызвано, то `None`.
+            Кортеж, содержащий:
+                bool: Статус выполнения.
+                Exception | None: Исключение, если возникла ошибка при сборке проекта, 
+                            None если ошибок не было.
         """
 
         try:
@@ -97,13 +101,17 @@ class Projects:
             return False, e
     
     @staticmethod
-    def projects_list() -> tuple[Dict[str, dict], Exception | None]:
+    def projects_list() -> Tuple[Dict[str, dict], Exception | None]:
         """
-            Возвращает список всех созданных через `orby-devtools` проектов.
-        
-            Returns:
-                projects (Dict[str, dict]): Информация о проектах.
-                exception (Exception | None): Ошибка, вызванная во время выполнения. Если ошибок не было вызвано, то `None`.
+        Возвращает список всех созданных через `orby-devtools` проектов.
+    
+        Returns:
+            Кортеж, содержащий:
+                Dict[str, dict]: Словарь с информацией о проектах, где:
+                    - key (str): Имя проекта.
+                    - value (dict): Информация о проекте.
+                Exception | None: Исключение, если возникла ошибка при чтении проектов, 
+                            None если ошибок не было.
         """
         try:
             return json.loads(PROJECTS_DB.read_text("utf-8")), None
@@ -111,7 +119,7 @@ class Projects:
             return {}, e
     
     @staticmethod
-    def remove_project(name: str, remove_dir: bool = False) -> tuple[bool, Exception | None]:
+    def remove_project(name: str, remove_dir: bool = False) -> Tuple[bool, Exception | None]:
         """
         Удаляет проект из списка проектов `orby-devtools`.
 
@@ -119,9 +127,11 @@ class Projects:
             name (str): Имя удаляемого проекта.
             remove_dir (bool, optional): Удалять ли папку, где хранится проект. По умолчанию - `False`.
 
-            Returns:
-                status (bool): Статус выполнения.
-                exception (Exception | None): Ошибка, вызванная во время выполнения. Если ошибок не было вызвано, то `None`.
+        Returns:
+            Кортеж, содержащий:
+                bool: Статус выполнения.
+                Exception | None: Исключение, если возникла ошибка при удалении проекта, 
+                            None если ошибок не было.
         """
 
         try:

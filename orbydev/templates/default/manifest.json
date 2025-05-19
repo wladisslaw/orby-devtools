@@ -1,8 +1,8 @@
 {
-    "name": "myapp",
-    "version": "1.0.0",
+    "name": "Orby app",
+    "version": "0.1.0",
     "author": "Unknown",
-    "description": "",
+    "description": "Simple console app.",
     "permissions": {
       "fs": ["read", "/data/"],
       "net": []
