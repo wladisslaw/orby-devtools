@@ -1,5 +1,7 @@
 from typing import Dict, Tuple
 import json
+from pathlib import Path
+import shutil
 
 from .master import TEMPLATES_DIR
 
@@ -46,3 +48,38 @@ class Templates:
 
         except Exception as e:
             return {}, e
+    
+    @staticmethod
+    def savetemplate(name: str, path: str) -> Tuple[bool, Exception | None]:
+        """
+        Сохраняет новый шаблон.
+
+        Args:
+            name (str): Имя сохраняемого шаблона.
+            path (str): Путь к папке, сохраняемой как шаблон.
+        
+        Returns:
+            Кортеж, содержащий:
+                bool: Статус выполнения.
+                Exception | None: Исключение, если возникла ошибка при сохранении шаблона, 
+                            None если ошибок не было.
+        """
+
+        try:
+            exists_templates, exception = Templates.templates_list()
+            if exception is not None:
+                raise Exception(f"Problems with general files. Exception: {exception}") from exception
+            
+            if name in exists_templates.keys():
+                raise Exception(f"Project with name '{name}' already exists.")
+            
+            _from = Path(path)
+            manifest = _from / "manifest.json"
+            if not manifest.exists():
+                raise Exception(f"It is no `manifest.json` in '{_from}'")
+
+            target_path = TEMPLATES_DIR / name
+            shutil.copytree(_from, target_path)
+
+        except Exception as e:
+            return False, e
