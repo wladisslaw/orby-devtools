@@ -11,5 +11,5 @@ def create_project(name: str, template: str = "default"):
     if not template_dir.exists():
         raise ValueError(f"Template '{template}' not found!")
     
-    shutil.copytree(template_dir, target_dir)
+    shutil.copytree(template_dir, target_dir, dirs_exist_ok=True)
     # Дополнительные действия (например, подстановка имени в манифест)

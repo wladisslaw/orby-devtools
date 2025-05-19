@@ -1,0 +1,7 @@
+Metadata-Version: 2.4
+Name: orby-devtools
+Version: 0.1.0
+Summary: Tools for Orby applications development.
+Requires-Dist: click>=8.0
+Requires-Dist: pyyaml>=6.0
+Requires-Dist: pipreqs>=0.4.0
