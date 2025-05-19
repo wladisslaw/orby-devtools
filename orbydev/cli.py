@@ -82,7 +82,7 @@ def rmproject(name: str, rmdir: str):
     """Удалить проект."""
     rmdir = rmdir.lower() == "t"
 
-    status, exception = Projects.remove_project(name, rmdir)
+    status, exception = Projects.remove(name, rmdir)
     if status:
         click.echo(click.style(f"Project deleted!", "green"))
     else:
@@ -127,6 +127,18 @@ def savetemplate(name, path):
         click.echo(click.style(f"Template '{name}' saved!", "green"))
     else:
         click.echo(f"Error when saving template: {click.style(str(exception), 'red')}", err=True)
+
+
+@main.command()
+@click.argument("name")
+def rmtemplate(name: str):
+    """Удалить шаблон."""
+    status, exception = Templates.remove(name)
+    if status:
+        click.echo(click.style(f"Template deleted!", "green"))
+    else:
+        click.echo(f"Error when deleting template: {click.style(str(exception), 'red')}", err=True)
+
 
 if __name__ == "__main__":
     main()

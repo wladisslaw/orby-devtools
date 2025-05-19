@@ -83,3 +83,33 @@ class Templates:
 
         except Exception as e:
             return False, e
+    
+    @staticmethod
+    def remove(name: str) -> Tuple[bool, Exception | None]:
+        """
+        Удаляет шаблон.
+
+        Args:
+            name (str): Имя удаляемого шаблона.
+
+        Returns:
+            Кортеж, содержащий:
+                bool: Статус выполнения.
+                Exception | None: Исключение, если возникла ошибка при удалении шаблона, 
+                            None если ошибок не было.
+        """
+
+        try:
+            templates, e = Templates.templates_list()
+
+            if e is not None:
+                raise Exception(f"Problems with general files. Exception: {e}") from e
+            if name not in templates.keys():
+                raise Exception(f"Template with name '{name}' does not exists.")
+            
+            shutil.rmtree(TEMPLATES_DIR / name)
+
+            return True, None
+
+        except Exception as e:
+            return False, e

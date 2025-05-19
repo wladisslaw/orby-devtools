@@ -119,7 +119,7 @@ class Projects:
             return {}, e
     
     @staticmethod
-    def remove_project(name: str, remove_dir: bool = False) -> Tuple[bool, Exception | None]:
+    def remove(name: str, remove_dir: bool = False) -> Tuple[bool, Exception | None]:
         """
         Удаляет проект из списка проектов `orby-devtools`.
 
