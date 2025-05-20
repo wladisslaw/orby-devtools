@@ -1,1 +1,1 @@
-recursive-include orby_devtools/templates *
+recursive-include orbydev/templates/default *.py *.json
