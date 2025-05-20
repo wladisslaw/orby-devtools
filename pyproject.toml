@@ -23,8 +23,5 @@ dependencies = [
     "pipreqs>=0.4.0"
 ]
 
-[project.scripts]
-orbydev = "orbydev.cli:main"
-
 [project.urls]
 Homepage = "https://github.com/wladisslaw/orby-devtools"
