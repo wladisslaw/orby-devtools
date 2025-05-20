@@ -3,9 +3,7 @@
     "version": "0.1.0",
     "author": "Unknown",
     "description": "Simple console app.",
-    "permissions": {
-      "fs": ["read", "/data/"],
-      "net": []
-    },
-    "entry_point": "main.py"
-  }
+    "permissions": {},
+    "entry_point": "main.py",
+    "requirements": {}
+}

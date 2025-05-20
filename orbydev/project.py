@@ -9,30 +9,30 @@ from .master import TEMPLATES_DIR, PROJECTS_DB
 
 class Projects:
     """
-    Предоставляет интерфейс для работы с проектами.
+    Provides an interface for working with projects.
 
     Methods:
-        new (name, path, template): Создаёт новый Orby проект и возвращает код выполнения.
-        build (path, save_at): Собирает проект в конечное .orby приложение.
-        projects_list (): Возвращает список всех созданных через `orby-devtools` проектов.
-        remove_project (name, remove_dir): Удаляет проект из списка проектов `orby-devtools`.
+        new (name, path, template): Creates a new Orby project and returns the runtime code.
+        build (path, save_at): Builds the project into a final .orby application.
+        projects_list (): Returns a list of all projects created via `orby-devtools`.
+        remove_project (name, remove_dir): Removes a project from the `orby-devtools` project list.
     """
 
     @staticmethod
     def new(name: str, path: str = "", template: str = "default") -> Tuple[bool, Exception | None]:
         """
-        Создаёт новый Orby проект и возвращает код выполнения.
+        Creates a new Orby project and returns the runtime code.
 
         Args:
-            name (str): Имя создаваемого проекта.
-            path (str): Конечная дирректория проекта. Если не указать, будет создана дирректория с именем проекта.
-            template (str, optional): Используемый шаблон. По умолчанию - `"default"`.
-        
+            name (str): The name of the project to be created.
+            path (str): The destination directory of the project. If not specified, a directory with the project name will be created.
+            template (str, optional): The template to use. The default is `"default"`.
+                
         Returns:
-            Кортеж, содержащий:
-                bool: Статус выполнения.
-                Exception | None: Исключение, если возникла ошибка при создании проекта, 
-                            None если ошибок не было.
+            Tuple containing:
+                bool: Execution status.
+                Exception | None: Exception if an error occurred during project creation, 
+                            None if no error occurred.
         """
 
         try:
@@ -70,17 +70,17 @@ class Projects:
     @staticmethod
     def build(path: str, save_at: str = "") -> Tuple[bool, Exception | None]:
         """
-        Собирает проект в конечное .orby приложение.
+        Builds the project into a final .orby application.
 
         Args:
-            path (str): Путь к папке собираемого проекта.
-            save_at (str, optional): Где сохранять файл. Если не указать, будет сохранено в текущей дирректории.
-        
+            path (str): The path to the folder of the project being built.
+            save_at (str, optional): Where to save the file. If not specified, it will be saved in the current directory.
+            
         Returns:
-            Кортеж, содержащий:
-                bool: Статус выполнения.
-                Exception | None: Исключение, если возникла ошибка при сборке проекта, 
-                            None если ошибок не было.
+            Tuple containing:
+                bool: Execution status.
+                Exception | None: Exception if an error occurred while building the project, 
+                            None if no error occurred.
         """
 
         try:
@@ -103,15 +103,15 @@ class Projects:
     @staticmethod
     def projects_list() -> Tuple[Dict[str, dict], Exception | None]:
         """
-        Возвращает список всех созданных через `orby-devtools` проектов.
-    
+        Returns a list of all projects created via `orby-devtools`.
+
         Returns:
-            Кортеж, содержащий:
-                Dict[str, dict]: Словарь с информацией о проектах, где:
-                    - key (str): Имя проекта.
-                    - value (dict): Информация о проекте.
-                Exception | None: Исключение, если возникла ошибка при чтении проектов, 
-                            None если ошибок не было.
+            Tuple containing:
+                Dict[str, dict]: A dictionary with information about the projects, where:
+                    - key (str): Project name.
+                    - value (dict): Information about the project.
+                Exception | None: Exception if an error occurred while reading projects, 
+                            None if no error occurred.
         """
         try:
             return json.loads(PROJECTS_DB.read_text("utf-8")), None
@@ -121,17 +121,17 @@ class Projects:
     @staticmethod
     def remove(name: str, remove_dir: bool = False) -> Tuple[bool, Exception | None]:
         """
-        Удаляет проект из списка проектов `orby-devtools`.
+        Removes the project from the `orby-devtools` project list.
 
         Args:
-            name (str): Имя удаляемого проекта.
-            remove_dir (bool, optional): Удалять ли папку, где хранится проект. По умолчанию - `False`.
+            name (str): The name of the project to be removed.
+            remove_dir (bool, optional): Whether to remove the folder where the project is stored. The default is `False`.
 
         Returns:
-            Кортеж, содержащий:
-                bool: Статус выполнения.
-                Exception | None: Исключение, если возникла ошибка при удалении проекта, 
-                            None если ошибок не было.
+            Tuple containing:
+                bool: Execution status.
+                Exception | None: Exception if an error occurred while deleting the project, 
+                            None if no error occurred.
         """
 
         try:

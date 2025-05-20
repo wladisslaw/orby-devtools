@@ -8,22 +8,27 @@ from .master import TEMPLATES_DIR
 
 class Templates:
     """
-    Предоставляет интерфейс для работы с шаблонами.
+    Provides an interface for working with templates.
+
+    Methods:
+        templates_list (): Returns a list of all available development templates.
+        savetemplate (name, path): Saves a new template.
+        remove (name): Deletes the template.
     """
 
     @staticmethod
     def templates_list() -> Tuple[Dict[str, str], Exception | None]:
         """
-        Возвращает список всех доступных шаблонов разработки.
+        Returns a list of all available development templates.
 
         Returns:
-            Кортеж, содержащий:
-                Dict[str, str]: Словарь с информацией о шаблонах, где:
-                    - key (str): Имя шаблона.
-                    - value (str): Описание шаблона из manifest.json
-                            (пустая строка, если manifest отсутствует или невалиден).
-                Exception | None: Исключение, если возникла ошибка при чтении шаблонов, 
-                            None если ошибок не было.
+            Tuple containing:
+                Dict[str, str]: A dictionary of template information, where:
+                    - key (str): The name of the template.
+                    - value (str): Template description from manifest.json
+                            (empty string if manifest is missing or invalid).
+                Exception | None: Exception if an error occurred while reading templates, 
+                            None if no error occurred.
         """
 
         try:
@@ -52,17 +57,17 @@ class Templates:
     @staticmethod
     def savetemplate(name: str, path: str) -> Tuple[bool, Exception | None]:
         """
-        Сохраняет новый шаблон.
+        Saves the new template.
 
         Args:
-            name (str): Имя сохраняемого шаблона.
-            path (str): Путь к папке, сохраняемой как шаблон.
-        
+            name (str): The name of the template to be saved.
+            path (str): The path to the folder being saved as a template.
+            
         Returns:
-            Кортеж, содержащий:
-                bool: Статус выполнения.
-                Exception | None: Исключение, если возникла ошибка при сохранении шаблона, 
-                            None если ошибок не было.
+            Tuple containing:
+                bool: Execution status.
+                Exception | None: Exception if an error occurred while saving the template, 
+                            None if no error occurred.
         """
 
         try:
@@ -87,16 +92,16 @@ class Templates:
     @staticmethod
     def remove(name: str) -> Tuple[bool, Exception | None]:
         """
-        Удаляет шаблон.
+        Deletes the template.
 
         Args:
-            name (str): Имя удаляемого шаблона.
+            name (str): The name of the template to be deleted.
 
         Returns:
-            Кортеж, содержащий:
-                bool: Статус выполнения.
-                Exception | None: Исключение, если возникла ошибка при удалении шаблона, 
-                            None если ошибок не было.
+            Tuple containing:
+                bool: Execution status.
+                Exception | None: Exception if an error occurred while deleting the template, 
+                            None if no error occurred.
         """
 
         try:

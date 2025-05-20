@@ -1,5 +1,4 @@
 from pathlib import Path
-import json
 
 MAIN_DIR = Path(__file__).parent
 TEMPLATES_DIR = MAIN_DIR / "templates"

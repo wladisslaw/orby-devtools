@@ -1,66 +1,58 @@
 # Orby DevTools
 
-**Orby DevTools** — инструмент для разработки изолированных Python-приложений под платформу Orby. Позволяет создавать, валидировать и собирать приложения в защищённый `.orby` формат для запуска через Orby-совместимые среды.
+**Orby DevTools** is a tool for developing isolated Python applications for the Orby platform. It allows you to create, validate and build applications in a protected `.orby` format for running through Orby-compatible environments.
 
-## Возможности
+## Quiq start
 
-- Генерация проектов из шаблонов  
-- Сборка в `.orby` архив с манифестом  
-- Валидация структуры проекта  
-- Поддержка кастомных разрешений  
-- Автогенерация зависимостей  
-
-## Быстрый старт
-
-### Установка
+### Install
 ```bash
 pip install orby-devtools
 ```
 
-### Базовое использование
-1. Создать проект:
+### Basic usage
+1. Create a project:
 ```bash
 orbydev new myapp --template=default
 ```
-2. Собрать в `.orby`:
+2. Build in `.orby`:
 ```bash
 orbydev build myapp
 ```
 
-## Команды CLI
+CLI Commands
 
-| Команда | Описание |
+| Command | Description |
 |---------|----------|
-| `new <name> <path> [--template=...]` | Создать проект в указанной директории |
-| `build <path> <save_at>` | Собрать проект из директории в `.orby` |
-| `projects` | Список всех проектов |
-| `rmproject <name> <rmdir (t/f)>` | Удалить проект |
-| `templates` | Список всех шаблонов |
-| `savetemplate <name> <path>` | Сохранить проект как шаблон |
-| `rmtemplate <name>` | Удалить шаблон |
+| `new <name> <path> [--template=...]` | Create a project in the specified directory |
+| `build <path> <save_at>` | Build project from the directory in `.orby` |
+| `projects` | List all projects |
+| `rmproject <name> <rmdir (t/f)>` | Delete a project |
+| `templates` | List of all templates |
+| `savetemplate <name> <path>` | Save directory as a template |
+| `rmtemplate <name>` | Delete template |
 
-## Структура проекта
+## Project structure
 ```
 myapp/
-├── main.py              # Точка входа
-├── manifest.json        # Конфигурация
-└── requirements.txt     # Зависимости
+├── main.py              # Entry point
+├── manifest.json        # Configuration
 ```
 
-## Пример `manifest.json`
+## Example `manifest.json`
 ```json
 {
-  "name": "myapp",
+  "name": "Orby app",
   "version": "0.1.0",
-  "author": "Your Name",
+  "author": "Your name",
   "description": "My Orby app",
   "permissions": {},
-  "entry_point": "main.py"
+  "entry_point": "main.py",
+  "requirements": {}
 }
 ```
 
-## Полезное
-- [Баг-трекер](https://github.com/wladisslaw/orby-devtools/issues)
-- Совместимость: Python 3.10+
-- Версия: 25.5.1
-- Статус: Beta
+## Useful
+- [Bug Tracker](https://github.com/wladisslaw/orby-devtools/issues)
+- Compatibility: Python 3.10+
+- Version: 25.5.1
+- Status: Alfa

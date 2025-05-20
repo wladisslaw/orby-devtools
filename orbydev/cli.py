@@ -26,7 +26,7 @@ def main():
 @click.argument("path", default="")
 @click.option("--template", default="default", help="Project template.")
 def new(name, path, template):
-    """Создать новый проект Orby."""
+    """Create a new Orby project."""
     status, exception = Projects.new(name, path, template)
     if status:
         click.echo(click.style(f"Project '{name}' created!", "green"))
@@ -38,7 +38,7 @@ def new(name, path, template):
 @click.argument("path")
 @click.argument("save_at", default="")
 def build(path, save_at):
-    """Собрать готовый проект Orby."""
+    """Build a ready Orby project."""
     status, exception = Projects.build(path, save_at)
     if status:
         click.echo(click.style(f"Project builded!", "green"))
@@ -48,7 +48,7 @@ def build(path, save_at):
 
 @main.command()
 def projects():
-    """Список всех проектов."""
+    """List of all projects."""
     projects_list, exception = Projects.projects_list()
 
     if exception is not None:
@@ -79,7 +79,7 @@ def projects():
 @click.argument("name")
 @click.argument("rmdir", default="f")
 def rmproject(name: str, rmdir: str):
-    """Удалить проект."""
+    """Delete a project."""
     rmdir = rmdir.lower() == "t"
 
     status, exception = Projects.remove(name, rmdir)
@@ -91,7 +91,7 @@ def rmproject(name: str, rmdir: str):
 
 @main.command()
 def templates():
-    """Список всех шаблонов."""
+    """List of all templates."""
     templates_list, exception = Templates.templates_list()
 
     if exception is not None:
@@ -121,7 +121,7 @@ def templates():
 @click.argument("name")
 @click.argument("path")
 def savetemplate(name, path):
-    """Сохраняет проект как шаблон."""
+    """Saves the project as a template."""
     status, exception = Templates.savetemplate(name, path)
     if status:
         click.echo(click.style(f"Template '{name}' saved!", "green"))
@@ -132,7 +132,7 @@ def savetemplate(name, path):
 @main.command()
 @click.argument("name")
 def rmtemplate(name: str):
-    """Удалить шаблон."""
+    """Delete template."""
     status, exception = Templates.remove(name)
     if status:
         click.echo(click.style(f"Template deleted!", "green"))

@@ -1,12 +1,12 @@
 """
-Orbydev - пакет для разработки приложений `.orby`.
+Orbydev is a package for `.orby` application development.
 
-Данный пакет может использоваться как самостоятельно, так и в качестве библиотеки (например для OrbyStudio).
-Подробная документация доступна на странице проекта по ссылке https://github.com/wladisslaw/orby-devtools.
+This package can be used both independently and as a library (e.g. for OrbyStudio).
+Detailed documentation is available on the project page at https://github.com/wladisslaw/orby-devtools.
 
 Classes:
-    Projetcs: Предоставляет интерфейс для работы с проектами.
-    Templates: Предоставляет интерфейс для работы с шаблонами.
+    Projetcs: Provides an interface for working with projects.
+    Templates: Provides an interface for working with templates.
 """
 
 from .project import Projects
