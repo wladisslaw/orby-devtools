@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "orby-devtools"
-version = "0.1.0"
+version = "25.05.1a"
 description = "Tools for Orby applications development."
 authors = [{name = "Wladisslaw Glebov", email = "your@email.com"}]
 readme = "README.md"
