@@ -25,3 +25,9 @@ dependencies = [
 
 [project.urls]
 Homepage = "https://github.com/wladisslaw/orby-devtools"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
